@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gesture Game Hub</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <header>
+    <h1>Gesture Game Hub</h1>
+    <p>Show fingers to the camera to select and launch a game</p>
+  </header>
+
+  <main>
+
+    <section class="top-section">
+
+      <div class="camera-box">
+        <div class="camera-label">Live Camera</div>
+        <video id="webcam" autoplay muted playsinline></video>
+        <div id="cam-status" class="cam-status">Starting camera...</div>
+      </div>
+
+      <div class="info-box">
+
+        <div class="gesture-display">
+          <div class="gesture-title">GESTURE DETECTED</div>
+          <div id="finger-count" class="finger-count">--</div>
+          <div id="game-name" class="game-name">Show a finger to begin</div>
+        </div>
+
+        <div id="countdown-box" class="countdown-box hidden">
+          <p>Launching in...</p>
+          <div id="countdown-number" class="countdown-number">3</div>
+          <button onclick="cancelLaunch()">Cancel</button>
+        </div>
+
+        <div class="instructions">
+          <h3>How to Select a Game</h3>
+          <p>Hold your fingers up steadily for about 2 seconds.</p>
+          <ul>
+            <li><span class="badge">1</span> Snake Game</li>
+            <li><span class="badge">2</span> Tic Tac Toe</li>
+            <li><span class="badge">3</span> Dino Runner</li>
+            <li><span class="badge">4</span> Space Shooter</li>
+            <li><span class="badge">5</span> Gesture Meteor</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="games-section">
+      <h2>Available Games</h2>
+      <div class="games-grid">
+
+        <div class="card" id="card-1" onclick="manualLaunch('1')">
+          <div class="card-gesture">1 Finger</div>
+          <img src="/static/images/snake.png" alt="Snake" onerror="this.style.opacity='0'"/>
+          <h3>Snake Game</h3>
+          <p>Control the snake with hand gestures. Eat food to grow longer!</p>
+          <div class="card-instructions">Point finger left / right / up / down to steer</div>
+        </div>
+
+        <div class="card" id="card-2" onclick="manualLaunch('2')">
+          <div class="card-gesture">2 Fingers</div>
+          <img src="/static/images/tictactoe.png" alt="TicTacToe" onerror="this.style.opacity='0'"/>
+          <h3>Tic Tac Toe</h3>
+          <p>Point at a cell to hover, pinch to place your mark. Beat the AI!</p>
+          <div class="card-instructions">Point to hover  |  Pinch to place</div>
+        </div>
+
+        <div class="card" id="card-3" onclick="manualLaunch('3')">
+          <div class="card-gesture">3 Fingers</div>
+          <img src="/static/images/dino.png" alt="Dino" onerror="this.style.opacity='0'"/>
+          <h3>Dino Runner</h3>
+          <p>Make a fist to jump, show 2 fingers to duck. Avoid the cacti!</p>
+          <div class="card-instructions">Fist = Jump  |  2 Fingers = Duck</div>
+        </div>
+
+        <div class="card" id="card-4" onclick="manualLaunch('4')">
+          <div class="card-gesture">4 Fingers</div>
+          <img src="/static/images/space_shooter.png" alt="Shooter" onerror="this.style.opacity='0'"/>
+          <h3>Space Shooter</h3>
+          <p>Move hand to steer, pinch to shoot, fist for shield!</p>
+          <div class="card-instructions">Move = Steer  |  Pinch = Shoot  |  Fist = Shield</div>
+        </div>
+
+        <div class="card card-wide" id="card-5" onclick="manualLaunch('5')">
+          <div class="card-gesture">5 Fingers</div>
+          <img src="/static/images/meteor.png" alt="Meteor" onerror="this.style.opacity='0'"/>
+          <h3>Gesture Meteor</h3>
+          <p>Move your hand left and right to keep the ball bouncing. Do not miss!</p>
+          <div class="card-instructions">Move hand left / right to steer basket</div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Built with Flask + MediaPipe + Pygame  |  Gesture Game Hub</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js" crossorigin="anonymous"></script>
+  <script src="/static/js/script.js"></script>
+</body>
+</html>
